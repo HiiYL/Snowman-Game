@@ -17,6 +17,7 @@
                 x += xSpeedConst;
             } else if((flip%2) == 0){
                 x += (-xSpeedConst);
+
             }
         }
  
@@ -27,6 +28,7 @@
         }
  
         public function changeDirection():void{
+			scaleX = -scaleX;
             trace("x ="+x);
             flip++;
         }
