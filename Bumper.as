@@ -15,7 +15,7 @@
         public function loop(e:Event):void{
             //code here
         }
-		public function removeSelf(e:Event):void {
+		public function removeSelf(e:Event = null):void {
 			trace("remove self");
 			removeEventListener(Event.ENTER_FRAME, loop); //stop the loop
 			removeEventListener(Event.REMOVED_FROM_STAGE, removeSelf);

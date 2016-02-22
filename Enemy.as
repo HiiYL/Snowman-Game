@@ -1,6 +1,7 @@
 ﻿package {
     import flash.display.MovieClip;
-    import flash.events.Event;public class Enemy extends MovieClip {
+    import flash.events.Event;
+	public class Enemy extends MovieClip {
  
         private var xSpeedConst:int = 2;
         private var flip:int = 1;
@@ -30,7 +31,7 @@
         }
         public function changeDirection():void{
 			scaleX = -scaleX;
-            trace("x ="+x);
+            //trace("x ="+x);
             flip++;
         }
     }
