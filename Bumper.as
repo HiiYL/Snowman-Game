@@ -8,11 +8,19 @@
             x = xLocation;
             y = yLocation;
  
-            addEventListener(Event.ENTER_FRAME, bumperloop);
+            addEventListener(Event.ENTER_FRAME, loop);
+			addEventListener(Event.REMOVED_FROM_STAGE, removeSelf);
         }
  
-        public function bumperloop(e:Event):void{
+        public function loop(e:Event):void{
             //code here
         }
+		public function removeSelf(e:Event):void {
+			trace("remove self");
+			removeEventListener(Event.ENTER_FRAME, loop); //stop the loop
+			removeEventListener(Event.REMOVED_FROM_STAGE, removeSelf);
+			this.parent.removeChild(this); //tell this object's "parent object" to remove this object
+			//in our case, the parent is the background because in the main code we said: back.addChild(bullet);
+		}
     }
 }

@@ -6,17 +6,18 @@
 		private var speed:int = 20; //add this
 		private var initialX:int;
         public function IceCube(playerX:int, playerY:int, playerDirection:String) { //notice the variables we pass in
-		// constructor code
-		if(playerDirection == "left") {
-			speed = 10;
-			x = playerX;
-		} else if(playerDirection == "right") {
-			speed = 10;
-			x = playerX +300;
-		}
-		y = playerY;
-		initialX = x; //use this to remember the initial spawn point
-		addEventListener(Event.ENTER_FRAME, loop);
+			// constructor code
+			if(playerDirection == "left") {
+				speed = 10;
+				x = playerX;
+			} else if(playerDirection == "right") {
+				speed = 10;
+				x = playerX +300;
+			}
+			y = playerY;
+			initialX = x; //use this to remember the initial spawn point
+			addEventListener(Event.ENTER_FRAME, loop);
+			addEventListener(Event.REMOVED_FROM_STAGE, removeSelf);
 		}
 		
         public function loop(e:Event):void { //add this
@@ -33,9 +34,10 @@
 			}
 		}
 		
-		public function removeSelf():void {
+		public function removeSelf(e:Event = null):void {
 			trace("remove self");
 			removeEventListener(Event.ENTER_FRAME, loop); //stop the loop
+			removeEventListener(Event.REMOVED_FROM_STAGE, removeSelf);
 			this.parent.removeChild(this); //tell this object's "parent object" to remove this object
 			//in our case, the parent is the background because in the main code we said: back.addChild(bullet);
 		}

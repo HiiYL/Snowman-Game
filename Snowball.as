@@ -34,7 +34,7 @@
 				}
 			}
         }
-		public function removeSelf():void {
+		public function removeSelf(e:Event = null):void {
 			trace("remove self");
 			removeEventListener(Event.ENTER_FRAME, loop); //stop the loop
 			this.parent.removeChild(this); //tell this object's "parent object" to remove this object
